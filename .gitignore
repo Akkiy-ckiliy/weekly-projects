@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+dist/
+coverage/
+
+# 環境変数
+.env
+.env.*
+
+# OS・エディタ
+.DS_Store
+Thumbs.db
+.vscode/
