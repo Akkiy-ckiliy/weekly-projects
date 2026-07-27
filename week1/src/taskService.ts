@@ -19,3 +19,15 @@ export function addTask(input: CreateTaskInput): Task {
 export function getTasks(): readonly Task[] {
     return tasks;
 }
+
+export function completeTask(id: number): Task | undefined {
+    const task = tasks.find((currentTask) => currentTask.id === id);
+
+    if (task === undefined){
+        return undefined;
+    }
+
+    task.status = "done";
+
+    return task;
+}
