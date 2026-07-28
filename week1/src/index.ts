@@ -1,11 +1,18 @@
 import { addTask, completeTask, getTasks, removeTask } from "./taskService.js";
 
-console.log(addTask({title: "sample1"}))
-console.log(addTask({title: "sample2"}))
+const args = process.argv.slice(2);
+const command = args[0];
+const title = args[1];
 
-completeTask(1);
-console.log(getTasks())
+if (command === "add") {
+    if (title === undefined){
+        console.log("titleを入力してください");
+    } else {
+        const addedTask = addTask({title});
+        console.log(addedTask);
+    }
+}
 
-removeTask(1);
-console.log(getTasks())
-console.log(removeTask(999))
+if (command === "list") {
+    console.log(getTasks())
+}
