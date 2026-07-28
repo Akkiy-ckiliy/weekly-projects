@@ -4,7 +4,7 @@ export interface Task {
     id: number,
     title: string,
     status: TaskStatus,
-    createdAt: Date
+    createdAt: string
 }
 
 export type CreateTaskInput = {

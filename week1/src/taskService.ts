@@ -8,7 +8,7 @@ export function addTask(input: CreateTaskInput): Task {
         id: nextId,
         title: input.title, 
         status: "todo",
-        createdAt: new Date(),
+        createdAt: new Date().toISOString(),
     };
     
     tasks.push(newTask);
@@ -40,4 +40,13 @@ export function removeTask(id: number): Task | undefined {
 
     const deletedTasks = tasks.splice(index, 1)
     return deletedTasks[0]
+}
+
+
+export function initializeTasks(loadedTasks: Task[]): void {
+    tasks.splice(0, tasks.length);
+    tasks.push(...loadedTasks);
+    const maxId = loadedTasks.length === 0 ? 0 : Math.max(...loadedTasks.map((task) => task.id));
+    
+    nextId = maxId + 1;
 }

@@ -1,4 +1,8 @@
-import { addTask, completeTask, getTasks, removeTask } from "./taskService.js";
+import { addTask, completeTask, getTasks, initializeTasks, removeTask } from "./taskService.js";
+import { loadTasks, saveTasks } from "./taskStorage.js";
+
+const loadedTasks = await loadTasks();
+initializeTasks(loadedTasks);
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -16,3 +20,5 @@ if (command === "add") {
 if (command === "list") {
     console.log(getTasks())
 }
+
+await saveTasks(getTasks());
