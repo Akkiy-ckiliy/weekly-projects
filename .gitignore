@@ -3,6 +3,9 @@ node_modules/
 dist/
 coverage/
 
+# ローカルデータ
+task.json/
+
 # 環境変数
 .env
 .env.*
