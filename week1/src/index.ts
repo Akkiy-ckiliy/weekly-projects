@@ -13,6 +13,19 @@ initializeTasks(loadedTasks);
 const args = process.argv.slice(2);
 const command = args[0];
 
+function parseTaskId(idText: string | undefined): number | undefined {
+  if (idText === undefined) {
+    console.log("IDを入力してください");
+    return undefined;
+  }
+  const id = Number(idText);
+  if (!Number.isInteger(id) || id <= 0) {
+    console.log("有効なIDを入力してください");
+    return undefined;
+  }
+  return id;
+}
+
 switch (command) {
   case "add": {
     const title = args[1];
@@ -32,16 +45,8 @@ switch (command) {
   }
 
   case "complete": {
-    const idText = args[1];
-    if (idText === undefined) {
-      console.log("IDを入力してください");
-      break;
-    }
-    const id = Number(idText);
-    if (Number.isNaN(id)) {
-      console.log("有効なIDを入力してください");
-      break;
-    }
+    const id = parseTaskId(args[1]);
+    if (id === undefined) break;
     const completedTask = completeTask(id);
     if (completedTask === undefined) {
       console.log("そのIDのタスクはありません");
@@ -53,16 +58,8 @@ switch (command) {
   }
 
   case "remove": {
-    const idText = args[1];
-    if (idText === undefined) {
-      console.log("IDを入力してください");
-      break;
-    }
-    const id = Number(idText);
-    if (!Number.isInteger(id) || id <= 0) {
-      console.log("有効なIDを入力してください");
-      break;
-    }
+    const id = parseTaskId(args[1]);
+    if (id === undefined) break;
     const removedTask = removeTask(id);
     if (removedTask === undefined) {
       console.log("そのIDのタスクはありません");
