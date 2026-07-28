@@ -10,12 +10,12 @@
     - Task
     - CreateTaskInput
 
-### Day2 CLI・ローカルストレージ追加
+### Day2 CLI・ローカルストレージ追加・重複処理のリファクタリング
 - taskStorage.ts
     - saveTasks
     - loadTasks
 - taskService
     - initializeTasks
 - index.ts
-    - add, list CLI
+    - CLI: add, list, complete, remove
     - loadTaskシステム
