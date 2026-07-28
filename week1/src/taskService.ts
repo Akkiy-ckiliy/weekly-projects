@@ -31,3 +31,13 @@ export function completeTask(id: number): Task | undefined {
 
     return task;
 }
+
+export function removeTask(id: number): Task | undefined {
+    const index = tasks.findIndex((currentIndex) => currentIndex.id === id)
+
+    if (index === -1)
+        return undefined
+
+    const deletedTasks = tasks.splice(index, 1)
+    return deletedTasks[0]
+}
