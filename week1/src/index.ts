@@ -29,10 +29,10 @@ function parseTaskId(idText: string | undefined): number | undefined {
 switch (command) {
   case "add": {
     const title = args[1];
-    if (title === undefined) {
+    if (title === undefined || title.trim() === "") {
       console.log("titleを入力してください");
     } else {
-      const addedTask = addTask({ title });
+      const addedTask = addTask({ title: title.trim() });
       await saveTasks(getTasks());
       console.log(addedTask);
     }
